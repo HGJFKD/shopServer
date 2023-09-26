@@ -1,0 +1,18 @@
+import express, { Request ,Response} from 'express'
+import { Register } from "../interfaces/typeRegister";
+const jwt = require("jsonwebtoken");
+
+
+export function authenticateToken(req : Request ,res: Response, next: Function){
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+    if (token == null) return res.status(401)
+  
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err : any, user: any) => {
+      if (err) return res.status(403)
+      req.body.user = user
+      next()
+    })
+    
+  
+  }
