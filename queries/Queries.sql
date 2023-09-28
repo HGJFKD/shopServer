@@ -17,3 +17,10 @@ CREATE TABLE revenues.revenues (
     notes TEXT null
 );
 -- drop table revenues.revenues
+
+CREATE TABLE users.users (
+    id serial Primary Key,
+    user_name text not null,
+    email TEXT not null, 
+    password TEXT not null, 
+);
