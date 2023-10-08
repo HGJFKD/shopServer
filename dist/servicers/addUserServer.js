@@ -4,8 +4,8 @@ exports.addUserServer = void 0;
 const insertNewUser_1 = require("../DL/insertNewUser");
 async function addUserServer(user) {
     const res = await (0, insertNewUser_1.insertNewUser)(user);
-    if (res !== "INSERT") {
-        throw new Error('Error!');
+    if (res >= 0) {
+        throw new Error('Error iserting!');
     }
     return true;
 }
