@@ -1,5 +1,6 @@
 import { JWTCode } from "../interfaces/typeJWTCode"
 import { Register } from "../interfaces/typeRegister";
+require("dotenv").config();
 
 const jwt = require("jsonwebtoken");
 

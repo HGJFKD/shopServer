@@ -14,9 +14,8 @@ const app = express();
 app.use(morgan("dev"))
 app.use(cors());
 app.use(express.json())
-// app.use(authenticateToken)
-// app.use(unless('/register/new', authenticateToken))
 
+app.use(unless('/register', authenticateToken))
 
 app.use('/register', registerRouter);
 app.use('/donors', donorsRouter);

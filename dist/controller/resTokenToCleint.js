@@ -1,11 +1,14 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.resTokenToCleint = void 0;
-const createJWTToken_1 = require("../auth/createJWTToken");
+const getJWTToken_1 = __importDefault(require("../servicers/getJWTToken"));
 async function resTokenToCleint(req, res) {
-    const { user } = req.body.user;
+    const user = req.body;
     try {
-        const token = (0, createJWTToken_1.createJWTToken)(user);
+        const token = await (0, getJWTToken_1.default)(user);
         res.status(200).json(token);
     }
     catch (err) {

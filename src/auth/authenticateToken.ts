@@ -1,5 +1,4 @@
-import express, { Request ,Response} from 'express'
-import { Register } from "../interfaces/typeRegister";
+import { Request ,Response} from 'express'
 const jwt = require("jsonwebtoken");
 
 

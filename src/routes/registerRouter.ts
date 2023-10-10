@@ -12,7 +12,7 @@ router.post('/', resTokenToCleint);
 
 router.post('/new', addUser)
 
-router.post("/isUser", )
+router.post("/isUser", isUser)
 
 export default  router;
 
