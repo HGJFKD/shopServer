@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCartByUser = void 0;
 const typeUserModel_1 = __importDefault(require("../Types/typeUserModel"));
 // Get all data func
-async function getCartByUser(name) {
-    const res = await typeUserModel_1.default.findById({ name }).exec();
+async function getCartByUser(_id) {
+    const res = await typeUserModel_1.default.findById({ _id }).exec();
     return res;
 }
 exports.getCartByUser = getCartByUser;

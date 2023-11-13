@@ -8,7 +8,6 @@ const typeUserModel_1 = __importDefault(require("../Types/typeUserModel"));
 async function insertNewUser(user) {
     const { name, email, password, cart } = user;
     const res = await typeUserModel_1.default.create({ name: name, email: email, password: password, cart: cart });
-    console.log("res", res);
     return res;
 }
 exports.insertNewUser = insertNewUser;
