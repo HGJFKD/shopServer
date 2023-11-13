@@ -1,11 +1,11 @@
-import { JWTCode } from "../interfaces/typeJWTCode"
-import { Register } from "../interfaces/typeRegister";
+import { JWTCode } from "../Types/typeJWTCode"
+import { User } from "../Types/typeUserModel";
 require("dotenv").config();
 
 const jwt = require("jsonwebtoken");
 
-export function createJWTToken (res : Register ): Record<string,JWTCode>{
-    const  user = res.userName
-    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+export function createJWTToken (res : User ): Record<string,JWTCode>{
+    const name = res.name as string
+    const accessToken = jwt.sign(name, process.env.ACCESS_TOKEN_SECRET)
     return {accessToken:accessToken}
 };

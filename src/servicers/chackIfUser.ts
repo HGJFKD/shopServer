@@ -1,5 +1,5 @@
 import { getUser } from "../DL/getUser";
-import { Register } from "../interfaces/typeRegister";
+import { Register } from "../Types/typeRegister";
 
 export async function chackIfUser (user : Register) : Promise<boolean>{
     const res = await getUser(user)

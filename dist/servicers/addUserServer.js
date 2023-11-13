@@ -5,7 +5,7 @@ const insertNewUser_1 = require("../DL/insertNewUser");
 const createJWTToken_1 = require("../auth/createJWTToken");
 async function addUserServer(user) {
     const res = await (0, insertNewUser_1.insertNewUser)(user);
-    if (res >= 0) {
+    if (!res) {
         throw new Error('Error iserting!');
     }
     const token = (0, createJWTToken_1.createJWTToken)(user);

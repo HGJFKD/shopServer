@@ -1,8 +1,9 @@
-import registerRouter from "./routes/registerRouter";
-import donorsRouter from "./routes/donorsRouter";
+import singupRouter from "./routes/singupRouter";
+import shopRouter from "./routes/shopRouter";
 import {authenticateToken} from './auth/authenticateToken'
 import unless from './middleware/unless'
 import { resPageNotFound } from "./controller/resPageNotFound";
+import connectToDatabase from "./DL/connectToMongoDB";
 
 const express = require("express");
 const cors = require('cors');
@@ -15,15 +16,15 @@ app.use(morgan("dev"))
 app.use(cors());
 app.use(express.json())
 
-app.use(unless('/register', authenticateToken))
+app.use(unless('/singup', authenticateToken))
 
-app.use('/register', registerRouter);
-app.use('/donors', donorsRouter);
+app.use('/signup', singupRouter);
+app.use('/shop', shopRouter);
 
 app.use("*",resPageNotFound);
 
 
 app.listen(3000, () => {
-    // readCSVFile(filePath).then(data => data.forEach(person => insertPersonToDB(person)))
+    connectToDatabase();
     console.log('\n', chalk.blueBright(`Server is running !!`));  
 });

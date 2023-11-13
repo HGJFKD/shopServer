@@ -1,25 +1,12 @@
-import { Register } from "../interfaces/typeRegister";
-import { Client } from "pg";
 
-export async function insertNewUser(user: Register) {
-  const client = new Client({
-    host: "localhost",
-    port: 5432,
-    database: "peher_haneztach",
-    user: "postgres",
-    password: "8114bar",
-  });
+import UserModel, { User } from "../Types/typeUserModel";
 
-  client.connect();
+export async function insertNewUser(user: User) {
 
-  const { userName, email, password } = user;
-  const query = {
-    text: "INSERT INTO users.users (user_name, email, password) VALUES ($1, $2, $3)",
-    values: [userName, email, password],
-  };
-  const res = await client.query(query);
-  
-  client.end();
+  const { name, email, password, cart } = user;
 
-  return res.rows[0];
+  const res = await UserModel.create({ name: name, email: email, password: password, cart: cart });
+  console.log("res", res);
+
+  return res
 }

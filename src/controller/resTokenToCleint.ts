@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { Register } from "../interfaces/typeRegister";
+import { User } from "../Types/typeUserModel";
 import getJWTToken from "../servicers/getJWTToken";
 
 export async function resTokenToCleint(req: Request, res: Response) {
-  const user: Register = req.body;
+  const user: User = req.body;
   try {
     const token = await getJWTToken(user);
     res.status(200).json(token);

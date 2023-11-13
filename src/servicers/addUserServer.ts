@@ -1,11 +1,12 @@
 import { insertNewUser } from "../DL/insertNewUser";
 import { createJWTToken } from "../auth/createJWTToken";
-import { JWTCode } from "../interfaces/typeJWTCode";
-import { Register } from "../interfaces/typeRegister";
+import { JWTCode } from "../Types/typeJWTCode";
+import { User } from "../Types/typeUserModel";
 
-export async function addUserServer (user : Register) : Promise<Record<string, JWTCode>>{
+
+export async function addUserServer (user : User) : Promise<Record<string, JWTCode>>{
     const res = await insertNewUser(user)
-    if (res >= 0){
+    if (!res){
         throw new Error ('Error iserting!')
     }
     const token: Record<string, JWTCode> = createJWTToken(user);
