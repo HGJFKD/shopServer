@@ -16,7 +16,7 @@ app.use(morgan("dev"))
 app.use(cors());
 app.use(express.json())
 
-app.use(unless('/user', authenticateToken))
+// app.use(unless('/user', authenticateToken))
 
 app.use('/user', singupRouter);
 app.use('/shop', shopRouter);
