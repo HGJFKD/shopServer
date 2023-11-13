@@ -12,15 +12,7 @@ router.get('/top_categories', resTopCategories)
 
 router.get('/:product_id', resProductById)
 
-router.get('/cart/:user', resCartByUser)
-
-// router.put('/cart/up/:user', upQuantityByCartUser)
-
-// router.put('/cart/down/:user', downQuantityByCartUser)
-
-// router.put('/cart/down/:user', downQuantityByCartUser)
-
-
+router.get('/cart/:user_name', resCartByUser)
 
 
 export default router

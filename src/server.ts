@@ -4,6 +4,7 @@ import {authenticateToken} from './auth/authenticateToken'
 import unless from './middleware/unless'
 import { resPageNotFound } from "./controller/resPageNotFound";
 import connectToDatabase from "./DL/connectToMongoDB";
+import cartRouter from "./routes/cartRouter";
 
 const express = require("express");
 const cors = require('cors');
@@ -16,10 +17,11 @@ app.use(morgan("dev"))
 app.use(cors());
 app.use(express.json())
 
-// app.use(unless('/user', authenticateToken))
+// app.use(unless('/cart', authenticateToken))
 
 app.use('/user', singupRouter);
 app.use('/shop', shopRouter);
+app.use('/cart', cartRouter);
 
 app.use("*",resPageNotFound);
 

@@ -1,4 +1,4 @@
-import { getTopCategories } from "../DL/getTopCategories";
+import getTopCategories from "../DL/getTopCategories";
 
 export async function serverTopCategories () {  
       const res = await getTopCategories()
