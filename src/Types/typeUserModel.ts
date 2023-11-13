@@ -3,6 +3,8 @@ import mongoose, { Schema, InferSchemaType, Model } from 'mongoose';
 
 const UserSchema: Schema<User> = new Schema<User>({
 
+    _id: mongoose.Schema.Types.ObjectId,
+
     password: {
         type: String,
         required: true
@@ -25,7 +27,8 @@ const UserSchema: Schema<User> = new Schema<User>({
                 quantity: {
                     type: Number,
                     required: true
-                },
+                }
+
             }]
         },
 

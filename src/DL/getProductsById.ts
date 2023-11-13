@@ -10,6 +10,6 @@ import ProductsModel from "../Types/typeProductsModel";
 // Get all data func
 export async function getProductsById(product_id: string): Promise<
     bottle | charger | earbud | laptop | phone | refrigerator | shirt | undefined> {
-    const res = await ProductsModel.findOne({ mixedObjects: { product_id: product_id } }).exec()
+    const res = await ProductsModel.findById({ mixedObjects: { _id: product_id } }).exec()
     return res;
 }
