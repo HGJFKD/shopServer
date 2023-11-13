@@ -8,7 +8,7 @@ import isUser from '../controller/resIsUser';
 
 const router = express.Router();
 
-router.post('/', addUser)
+router.post('/signup', addUser)
 
 router.post("/signin", isUser)
 

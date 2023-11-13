@@ -16,9 +16,9 @@ app.use(morgan("dev"))
 app.use(cors());
 app.use(express.json())
 
-app.use(unless('/singup', authenticateToken))
+app.use(unless('/user', authenticateToken))
 
-app.use('/signup', singupRouter);
+app.use('/user', singupRouter);
 app.use('/shop', shopRouter);
 
 app.use("*",resPageNotFound);

@@ -17,8 +17,8 @@ const app = express();
 app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
-app.use((0, unless_1.default)('/singup', authenticateToken_1.authenticateToken));
-app.use('/signup', singupRouter_1.default);
+app.use((0, unless_1.default)('/user', authenticateToken_1.authenticateToken));
+app.use('/user', singupRouter_1.default);
 app.use('/shop', shopRouter_1.default);
 app.use("*", resPageNotFound_1.resPageNotFound);
 app.listen(3000, () => {

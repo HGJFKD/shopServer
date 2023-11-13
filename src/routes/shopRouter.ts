@@ -18,6 +18,9 @@ router.get('/cart/:user', resCartByUser)
 
 // router.put('/cart/down/:user', downQuantityByCartUser)
 
+// router.put('/cart/down/:user', downQuantityByCartUser)
+
+
 
 
 export default router

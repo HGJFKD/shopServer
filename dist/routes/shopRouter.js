@@ -15,4 +15,5 @@ router.get('/:product_id', resProductById_1.default);
 router.get('/cart/:user', resCartByUser_1.resCartByUser);
 // router.put('/cart/up/:user', upQuantityByCartUser)
 // router.put('/cart/down/:user', downQuantityByCartUser)
+// router.put('/cart/down/:user', downQuantityByCartUser)
 exports.default = router;
