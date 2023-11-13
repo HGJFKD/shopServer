@@ -11,6 +11,6 @@ export async function addUser(req: Request, res: Response) {
         res.status(200).json(token)
     }
     catch (err) {
-        res.status(401).json(err)
+        res.status(401).json({ err: err.message })
     }
 }

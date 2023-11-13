@@ -11,7 +11,7 @@ async function resIsUser(req, res) {
         }
     }
     catch (err) {
-        res.status(401).json(err);
+        res.status(401).json({ err: err.message });
     }
 }
 exports.default = resIsUser;

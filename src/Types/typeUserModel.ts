@@ -2,6 +2,7 @@ import mongoose, { Schema, InferSchemaType, Model } from 'mongoose';
 
 
 const UserSchema: Schema<User> = new Schema<User>({
+
     password: {
         type: String,
         required: true
@@ -27,7 +28,7 @@ const UserSchema: Schema<User> = new Schema<User>({
                 },
             }]
         },
-        
+
         default: []
     },
 
@@ -35,6 +36,6 @@ const UserSchema: Schema<User> = new Schema<User>({
 
 export type User = InferSchemaType<typeof Schema>;
 
-const UserModel: Model<User> = mongoose.model<User>('user', UserSchema);
+const UserModel: Model<User> = mongoose.model<User>('users', UserSchema);
 
 export default UserModel

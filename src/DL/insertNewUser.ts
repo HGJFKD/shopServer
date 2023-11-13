@@ -7,6 +7,5 @@ export async function insertNewUser(user: User) {
 
   const res = await UserModel.create({ name: name, email: email, password: password, cart: cart });
 
-
   return res
 }

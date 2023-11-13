@@ -12,7 +12,7 @@ async function resTokenToCleint(req, res) {
         res.status(200).json(token);
     }
     catch (err) {
-        res.status(401).json(err);
+        res.status(401).json({ err: err.message });
     }
 }
 exports.resTokenToCleint = resTokenToCleint;

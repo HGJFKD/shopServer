@@ -9,6 +9,6 @@ async function addUserServer(user) {
         throw new Error('Error iserting!');
     }
     const token = (0, createJWTToken_1.createJWTToken)(user);
-    return token;
+    return res;
 }
 exports.addUserServer = addUserServer;

@@ -9,6 +9,6 @@ export default async function resIsUser (req : Request, res: Response) {
             res.status(500).json('User not in DB')
         }
     } catch (err) {
-        res.status(401).json(err)
+        res.status(401).json({ err: err.message })
     }
 }
