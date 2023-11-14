@@ -6,8 +6,6 @@ import isUser from "../helpers/isUser";
 
 
 export async function addUserServer(user: User): Promise<Record<string, JWTCode>> {
-    console.log("user", user);
-
 
     if (await isUser(user)) {
         throw new Error('User exist')

@@ -5,7 +5,7 @@ const getProductByTitle_1 = require("../DL/getProductByTitle");
 async function serverProductByTitle(product_title) {
     const res = await (0, getProductByTitle_1.getProductByTitle)(product_title);
     if (!res) {
-        throw new Error('We did not find a product with such an id');
+        throw new Error('We did not find a product with such an title');
     }
     else {
         return res;

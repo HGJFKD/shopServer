@@ -4,13 +4,13 @@
 import express from 'express'
 import { resTokenToCleint } from '../controller/resTokenToCleint';
 import { addUser } from '../controller/addUser';
-import isUser from '../controller/resIsUser';
+import signin from '../controller/resSignIn';
 
 const router = express.Router();
 
 router.post('/signup', addUser)
 
-router.post("/signin", isUser)
+router.post("/signin", signin)
 
 export default  router;
 
