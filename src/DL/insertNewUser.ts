@@ -1,6 +1,6 @@
 
 import UserModel, { User } from "../Types/typeUserModel";
-import isUser from "../helpers/isUser";
+import isUser from "./isUser";
 
 export async function insertNewUser(user: User) {
 

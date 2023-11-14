@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addUserServer = void 0;
 const insertNewUser_1 = require("../DL/insertNewUser");
-const isUser_1 = __importDefault(require("../helpers/isUser"));
+const isUser_1 = __importDefault(require("../DL/isUser"));
 async function addUserServer(user) {
     if (await (0, isUser_1.default)(user)) {
         throw new Error('User exist');

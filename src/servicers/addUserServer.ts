@@ -2,7 +2,7 @@ import { insertNewUser } from "../DL/insertNewUser";
 import { createJWTToken } from "../auth/createJWTToken";
 import { JWTCode } from "../Types/typeJWTCode";
 import { User } from "../Types/typeUserModel";
-import isUser from "../helpers/isUser";
+import isUser from "../DL/isUser";
 
 
 export async function addUserServer(user: User): Promise<Record<string, JWTCode>> {

@@ -1,5 +1,5 @@
 import { User } from "../Types/typeUserModel";
-import isUser from "../helpers/isUser";
+import isUser from "../DL/isUser";
 
 export async function serverSignIn(user: User): Promise<Error | string> {
 

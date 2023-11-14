@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.serverSignIn = void 0;
-const isUser_1 = __importDefault(require("../helpers/isUser"));
+const isUser_1 = __importDefault(require("../DL/isUser"));
 async function serverSignIn(user) {
     if (!await (0, isUser_1.default)(user)) {
         throw new Error('User is not registered');

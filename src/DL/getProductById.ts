@@ -8,11 +8,17 @@ import { shirt } from "../Types/ProductsSchemos/typeShirts";
 import ProductsModel from "../Types/typeProductsModel";
 
 // Get all data func
-export async function getProductByTitle(product_title: string): Promise<
+export async function getProductById(product_id: string): Promise<
     bottle | charger | earbud | laptop | phone | refrigerator | shirt | undefined> {
-    const res = await ProductsModel.findOne(
-        { 'products.title': product_title },
-        { 'products.$': 1 }
+    const res = await ProductsModel.findOneAndUpdate(
+        { 'products.product_id': product_id },
+        { $inc: { 'products.$.clicks': 1 } },
+        { new: true }
     ).exec()
-    return res.products;
+    const product = await ProductsModel.findOne(
+        { 'products.product_id': product_id },
+        { 'products.$': 1 },
+        { new: true }
+    ).exec()
+    return product
 }
