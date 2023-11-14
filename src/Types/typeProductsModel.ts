@@ -14,6 +14,8 @@ const ProductsSchema: Schema<
         type: mongoose.Schema.Types.Mixed,
         default: {}
     }
+},{
+    strict: false
 });
 
 const ProductsModel: Model<

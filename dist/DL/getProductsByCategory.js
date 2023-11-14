@@ -6,9 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getProductsByCategory = void 0;
 const typeProductsModel_1 = __importDefault(require("../Types/typeProductsModel"));
 // Get all data func
-async function getProductsByCategory(category_name) {
-    console.log(category_name);
-    const res = await typeProductsModel_1.default.find({ name: category_name }).exec();
+async function getProductsByCategory(category_id) {
+    const res = await typeProductsModel_1.default.findByIdAndUpdate({ _id: category_id }, { $inc: { 'clicks': 1 } }, { new: true }).exec();
+    console.log(res);
     return res;
 }
 exports.getProductsByCategory = getProductsByCategory;

@@ -29,6 +29,8 @@ const ProductsSchema = new mongoose_1.Schema({
         type: mongoose_1.default.Schema.Types.Mixed,
         default: {}
     }
+}, {
+    strict: false
 });
 const ProductsModel = mongoose_1.default.model('products', ProductsSchema);
 exports.default = ProductsModel;

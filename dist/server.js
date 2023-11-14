@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const singupRouter_1 = __importDefault(require("./routes/singupRouter"));
+const userRouter_1 = __importDefault(require("./routes/userRouter"));
 const shopRouter_1 = __importDefault(require("./routes/shopRouter"));
 const resPageNotFound_1 = require("./controller/resPageNotFound");
 const connectToMongoDB_1 = __importDefault(require("./DL/connectToMongoDB"));
@@ -17,7 +17,7 @@ app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
 // app.use(unless('/cart', authenticateToken))
-app.use('/user', singupRouter_1.default);
+app.use('/user', userRouter_1.default);
 app.use('/shop', shopRouter_1.default);
 app.use('/cart', cartRouter_1.default);
 app.use("*", resPageNotFound_1.resPageNotFound);

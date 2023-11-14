@@ -6,7 +6,7 @@ import resProductById from '../controller/resProductById';
 
 const router = express.Router();
 
-router.get('/category/:category_name', resProductsByCategory)
+router.get('/category/:category_id', resProductsByCategory)
 
 router.get('/top_categories', resTopCategories)
 
