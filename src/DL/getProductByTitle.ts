@@ -8,9 +8,11 @@ import { shirt } from "../Types/ProductsSchemos/typeShirts";
 import ProductsModel from "../Types/typeProductsModel";
 
 // Get all data func
-export async function getProductsById(product_id: string): Promise<
+export async function getProductByTitle(product_title: string): Promise<
     bottle | charger | earbud | laptop | phone | refrigerator | shirt | undefined> {
-    const res = await ProductsModel.find({ 'products.title': product_id }).exec()
-    console.log(res)
-    return res;
+    const res = await ProductsModel.findOne(
+        { 'products.title': product_title },
+        { 'products.$': 1 }
+    ).exec()
+    return res.products;
 }
