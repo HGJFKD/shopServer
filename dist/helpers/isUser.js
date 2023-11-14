@@ -7,8 +7,10 @@ const typeUserModel_1 = __importDefault(require("../Types/typeUserModel"));
 async function isUser(user) {
     const { name } = user;
     const res = await typeUserModel_1.default.find({ name: name });
-    console.log(name);
-    const isUser = res ? true : false;
-    return isUser;
+    if (Object.keys(res).length > 0)
+        return true;
+    else {
+        return false;
+    }
 }
 exports.default = isUser;

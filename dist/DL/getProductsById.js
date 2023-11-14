@@ -7,7 +7,8 @@ exports.getProductsById = void 0;
 const typeProductsModel_1 = __importDefault(require("../Types/typeProductsModel"));
 // Get all data func
 async function getProductsById(product_id) {
-    const res = await typeProductsModel_1.default.find({ "products._id": product_id }).exec();
+    const res = await typeProductsModel_1.default.find({ 'products.title': product_id }).exec();
+    console.log(res);
     return res;
 }
 exports.getProductsById = getProductsById;

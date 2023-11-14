@@ -7,6 +7,7 @@ exports.addUserServer = void 0;
 const insertNewUser_1 = require("../DL/insertNewUser");
 const isUser_1 = __importDefault(require("../helpers/isUser"));
 async function addUserServer(user) {
+    console.log("user", user);
     if (await (0, isUser_1.default)(user)) {
         throw new Error('User exist');
     }

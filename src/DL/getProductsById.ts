@@ -10,6 +10,7 @@ import ProductsModel from "../Types/typeProductsModel";
 // Get all data func
 export async function getProductsById(product_id: string): Promise<
     bottle | charger | earbud | laptop | phone | refrigerator | shirt | undefined> {
-    const res = await ProductsModel.find({ "products._id": product_id }).exec()
+    const res = await ProductsModel.find({ 'products.title': product_id }).exec()
+    console.log(res)
     return res;
 }
