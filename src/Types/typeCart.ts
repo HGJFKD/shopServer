@@ -2,6 +2,7 @@ import { InferSchemaType, Schema } from "mongoose";
 
 
 const Cart: Schema<cart> = new Schema<cart>({
+    
 
     product_id: {
         type: String,

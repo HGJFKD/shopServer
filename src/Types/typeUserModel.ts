@@ -1,5 +1,4 @@
 import mongoose, { Schema, InferSchemaType, Model } from 'mongoose';
-import Cart from './typeCart';
 
 
 const UserSchema: Schema<User> = new Schema<User>({

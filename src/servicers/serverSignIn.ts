@@ -5,9 +5,11 @@ import { createJWTToken } from "../auth/createJWTToken";
 
 export async function serverSignIn(user: User): Promise<Record<string, JWTCode>> {
 
+    const result = await isUser(user)
+    const { isUserBollean, errorMessage } = result
 
-    if (!await isUser(user)) {
-        throw new Error('User is not registered')
+    if (!isUserBollean) {
+        throw new Error(errorMessage!)
     }
     else {
 

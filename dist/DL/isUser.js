@@ -5,10 +5,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeUserModel_1 = __importDefault(require("../Types/typeUserModel"));
 async function isUser(user) {
-    const { email } = user;
+    const { email, password } = user;
+    let errorMessage;
     const res = await typeUserModel_1.default.find({ email: email });
-    const { name, _id } = res;
-    const isUserBollean = Object.keys(res).length > 0 ? true : false;
-    return isUserBollean;
+    const user_password = res[0].password;
+    (Object.keys(res).length <= 0);
+    {
+        errorMessage = "User not found";
+    }
+    if (user_password !== password) {
+        errorMessage = "Incorrect password";
+    }
+    else {
+        errorMessage = "Login successful";
+    }
+    const isUserBollean = (errorMessage === "Login successful") ? true : false;
+    return { isUserBollean: isUserBollean, errorMessage: errorMessage };
 }
 exports.default = isUser;

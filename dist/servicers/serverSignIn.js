@@ -7,8 +7,10 @@ exports.serverSignIn = void 0;
 const isUser_1 = __importDefault(require("../DL/isUser"));
 const createJWTToken_1 = require("../auth/createJWTToken");
 async function serverSignIn(user) {
-    if (!await (0, isUser_1.default)(user)) {
-        throw new Error('User is not registered');
+    const result = await (0, isUser_1.default)(user);
+    const { isUserBollean, errorMessage } = result;
+    if (!isUserBollean) {
+        throw new Error(errorMessage);
     }
     else {
         const token = (0, createJWTToken_1.createJWTToken)(user);
