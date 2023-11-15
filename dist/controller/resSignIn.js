@@ -7,7 +7,8 @@ async function resSignIn(req, res) {
         res.status(200).json(resSignIn);
     }
     catch (err) {
-        res.status(401).json({ err: err.message });
+        const errorMessage = err instanceof Error ? err.message : "An error occurred";
+        res.status(401).json({ err: errorMessage });
     }
 }
 exports.default = resSignIn;

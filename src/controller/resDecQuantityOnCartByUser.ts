@@ -10,6 +10,7 @@ export default async function resDecQuantityOnCartByUser(req: Request, res: Resp
         const data = await serverChangeQuantityOnCartByUser(req.body, changer)
         res.status(200).json(data)
     } catch (err) {
-        res.status(500).json({ err: err.message })
+        const errorMessage: string = err instanceof Error ? err.message : "An error occurred";
+        res.status(500).json({ err: errorMessage })
     }
 }

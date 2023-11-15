@@ -8,7 +8,8 @@ async function resUpdateCart(req, res) {
         res.status(200).json(cart);
     }
     catch (err) {
-        res.status(500).json({ err: err.message });
+        const errorMessage = err instanceof Error ? err.message : "An error occurred";
+        res.status(500).json({ err: errorMessage });
     }
 }
 exports.resUpdateCart = resUpdateCart;

@@ -8,6 +8,7 @@ export async function resTokenToCleint(req: Request, res: Response) {
     const token = await getJWTToken(user);
     res.status(200).json(token);
   } catch (err) {
-    res.status(401).json({ err: err.message });
+    const errorMessage: string = err instanceof Error ? err.message : "An error occurred";
+    res.status(401).json({ err: errorMessage });
   }
 }

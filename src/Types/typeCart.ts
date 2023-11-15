@@ -1,8 +1,8 @@
-import { InferSchemaType, Schema } from "mongoose";
+import {  Schema } from "mongoose";
 
 
-const Cart: Schema<cart> = new Schema<cart>({
-    
+const Cart: Schema<typyCart> = new Schema<typyCart>({
+
 
     product_id: {
         type: String,
@@ -17,5 +17,8 @@ const Cart: Schema<cart> = new Schema<cart>({
     timestamps: true
 });
 
-export type cart = InferSchemaType<typeof Schema>;
+export type typyCart = {
+    product_id: string,
+    quantity: number
+};
 export default Cart

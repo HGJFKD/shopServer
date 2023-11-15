@@ -1,6 +1,4 @@
-
 import { Request, Response } from "express"
-
 import { addUserServer } from "../servicers/addUserServer"
 
 export async function addUser(req: Request, res: Response) {
@@ -10,6 +8,8 @@ export async function addUser(req: Request, res: Response) {
         res.status(200).json(token)
     }
     catch (err) {
-        res.status(401).json({ err: err.message })
+        const errorMessage: string = err instanceof Error ? err.message : "An error occurred";
+        res.status(401).json({ err: errorMessage })
     }
+
 }

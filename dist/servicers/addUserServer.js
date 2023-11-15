@@ -7,9 +7,8 @@ exports.addUserServer = void 0;
 const insertNewUser_1 = require("../DL/insertNewUser");
 const isUser_1 = __importDefault(require("../DL/isUser"));
 async function addUserServer(user) {
-    const result = await (0, isUser_1.default)(user);
+    const result = await (0, isUser_1.default)(user, 'email');
     const { isUserBollean } = result;
-    console.log(isUserBollean);
     if (isUserBollean) {
         throw new Error('User exist');
     }

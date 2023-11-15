@@ -6,6 +6,7 @@ export async function resUpdateCart(req: Request, res: Response) {
         const cart = await serverUpdateCartByUser(req.body)
         res.status(200).json(cart)
     } catch (err) {
-        res.status(500).json({ err: err.message })
+        const errorMessage: string = err instanceof Error ? err.message : "An error occurred";
+        res.status(500).json({ err: errorMessage })
     }
 }

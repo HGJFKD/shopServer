@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "password": "securePass123",
+    "cart":
+    [
+      { "product_id": "refrigerator 1", "quantity": 2 },
+      { "product_id": "phone 1", "quantity": 1 }
+    ]
+  },
+  {
+    "name": "Bob Smith",
+    "email": "bob.smith@example.com",
+    "password": "strongPassword456",
+    "cart":
+    [
+      { "product_id": "refrigerator 3", "quantity": 3 },
+      { "product_id": "phone 3", "quantity": 1 }
+    ]
+  },
+  {
+    "name": "Charlie Davis",
+    "email": "charlie.davis@example.com",
+    "password": "password789",
+    "cart":
+    [
+      { "product_id": "refrigerator 5", "quantity": 1 },
+      { "product_id": "phone 2", "quantity": 2 }
+    ]
+  },
+  {
+    "name": "David Brown",
+    "email": "david.brown@example.com",
+    "password": "securePass123",
+    "cart":
+    [
+      { "product_id": "refrigerator 1", "quantity": 1 },
+      { "product_id": "phone 1", "quantity": 3 }
+    ]
+  },
+  {
+    "name": "Eva White",
+    "email": "eva.white@example.com",
+    "password": "strongPassword456",
+    "cart":
+    [
+      { "product_id": "refrigerator 2", "quantity": 2 },
+      { "product_id": "phone 3", "quantity": 1 }
+    ]
+  },
+  {
+    "name": "Frank Miller",
+    "email": "frank.miller@example.com",
+    "password": "password789",
+    "cart":
+    [
+      { "product_id": "refrigerator 3", "quantity": 2 },
+      { "product_id": "phone 1", "quantity": 1 }
+    ]
+  },
+  {
+    "name": "Grace Turner",
+    "email": "grace.turner@example.com",
+    "password": "securePass123",
+    "cart":
+    [
+      { "product_id": "refrigerator 1", "quantity": 1 },
+      { "product_id": "phone 6", "quantity": 2 }
+    ]
+  }
+]

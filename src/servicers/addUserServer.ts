@@ -6,10 +6,8 @@ import ResSignUp from "../Types/typeResSignIn";
 
 export async function addUserServer(user: User): Promise<ResSignUp> {
    
-    const result = await isUser(user)
+    const result = await isUser(user, 'email')
     const { isUserBollean } = result
-    console.log(isUserBollean);
-
 
     if (isUserBollean) {
         throw new Error('User exist')

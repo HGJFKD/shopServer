@@ -1,7 +1,11 @@
 import UserModel, { User } from "../Types/typeUserModel";
 
-// Get all data func
-export async function getCartByUser(_id: string): Promise<User[] | User | undefined> {
+
+export async function getCartByUser(_id: string): Promise<User | null> {
     const res = await UserModel.findById({ _id }).exec()
-    return res;
+    if (res) {
+        return res;
+    } else {
+        return null;
+    }
 }
