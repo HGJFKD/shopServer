@@ -8,24 +8,27 @@ export default async function isUser(user: User): Promise<{
 
     const { email, password } = user;
     let errorMessage: string
+    let isUserBollean: boolean
 
     const res = await UserModel.find({ email: email });
 
-    const user_password = res[0].password as 
 
     if (Object.keys(res).length <= 0) {
         errorMessage = "User not found";
+        isUserBollean = false
     }
-
-    if (user_password !== password) {
-        errorMessage = "Incorrect password";
-    }
-
     else {
-        errorMessage = "Login successful"
+        const user_password = res[0].password
+
+        if (user_password !== password) {
+            errorMessage = "Incorrect password";
+            isUserBollean = false
+        }
+        else {
+            errorMessage = "Login successful"
+            isUserBollean = true
+        }
     }
-
-    const isUserBollean = (errorMessage === "Login successful") ? true : false
-
+    // isUserBollean = (Object.keys(res).length > 0) ? true : false
     return { isUserBollean: isUserBollean, errorMessage: errorMessage }
 }

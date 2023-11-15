@@ -7,19 +7,24 @@ const typeUserModel_1 = __importDefault(require("../Types/typeUserModel"));
 async function isUser(user) {
     const { email, password } = user;
     let errorMessage;
+    let isUserBollean;
     const res = await typeUserModel_1.default.find({ email: email });
-    const user_password = res[0].password;
-    (Object.keys(res).length <= 0);
-    {
+    if (Object.keys(res).length <= 0) {
         errorMessage = "User not found";
-    }
-    if (user_password !== password) {
-        errorMessage = "Incorrect password";
+        isUserBollean = false;
     }
     else {
-        errorMessage = "Login successful";
+        const user_password = res[0].password;
+        if (user_password !== password) {
+            errorMessage = "Incorrect password";
+            isUserBollean = false;
+        }
+        else {
+            errorMessage = "Login successful";
+            isUserBollean = true;
+        }
     }
-    const isUserBollean = (errorMessage === "Login successful") ? true : false;
+    // isUserBollean = (Object.keys(res).length > 0) ? true : false
     return { isUserBollean: isUserBollean, errorMessage: errorMessage };
 }
 exports.default = isUser;

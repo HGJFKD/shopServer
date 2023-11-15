@@ -8,8 +8,8 @@ const typeUserModel_1 = __importDefault(require("../Types/typeUserModel"));
 async function updateCartByUser(user) {
     const _id = user._id;
     const products = user.cart['products'];
-    console.log(products);
-    const res = await typeUserModel_1.default.findOneAndUpdate({ _id: _id }, { cart: { ['products']: products } }, { new: true });
+    const res = await typeUserModel_1.default.findOne({ _id: _id });
+    console.log(res);
     return res;
 }
 exports.updateCartByUser = updateCartByUser;
