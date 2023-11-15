@@ -1,7 +1,8 @@
-import { JWTCode } from "./typeJWTCode"
+import { Types } from "mongoose"
 
-type ResSignIn = {
-    user_id: string,
+type ResSignUp = {
+    user_id: Types.ObjectId,
     user_name: string,
-    token: JWTCode
 }
+
+export default ResSignUp

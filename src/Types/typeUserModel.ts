@@ -4,6 +4,7 @@ import Cart from './typeCart';
 
 const UserSchema: Schema<User> = new Schema<User>({
 
+
     password: {
         type: String,
         required: true

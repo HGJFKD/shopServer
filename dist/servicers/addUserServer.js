@@ -7,13 +7,18 @@ exports.addUserServer = void 0;
 const insertNewUser_1 = require("../DL/insertNewUser");
 const isUser_1 = __importDefault(require("../DL/isUser"));
 async function addUserServer(user) {
+    const { name, _id } = user;
     if (await (0, isUser_1.default)(user)) {
         throw new Error('User exist');
     }
     else {
         const res = await (0, insertNewUser_1.insertNewUser)(user);
-        // const token: Record<string, JWTCode> = createJWTToken(user);
-        return res;
+        const { name, _id } = res;
+        const resSignUp = {
+            user_name: name,
+            user_id: _id
+        };
+        return resSignUp;
     }
 }
 exports.addUserServer = addUserServer;
