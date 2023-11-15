@@ -6,9 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const resCartByUser_1 = require("../controller/resCartByUser");
 const resIfUpdateCartByUser_1 = require("../controller/resIfUpdateCartByUser");
+const resIncQuantityOnCartByUser_1 = __importDefault(require("../controller/resIncQuantityOnCartByUser"));
+const resdecQuantityOnCartByUser_1 = __importDefault(require("../controller/resdecQuantityOnCartByUser"));
 const router = express_1.default.Router();
 router.get('/:_id', resCartByUser_1.resCartByUser);
-// router.put('/cart/up/:user', upQuantityByCartUser)
-// router.put('/cart/down/:user', downQuantityByCartUser)
+router.put('/inc', resIncQuantityOnCartByUser_1.default);
+router.put('/dec', resdecQuantityOnCartByUser_1.default);
 router.put('/update', resIfUpdateCartByUser_1.resIfUpdateCartByUser);
 exports.default = router;

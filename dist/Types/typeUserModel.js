@@ -37,21 +37,14 @@ const UserSchema = new mongoose_1.Schema({
         type: String,
         required: true
     },
-    cart: {
-        type: {
-            products: [{
-                    product_id: {
-                        type: String,
-                        required: true
-                    },
-                    quantity: {
-                        type: Number,
-                        required: true
-                    }
-                }]
-        },
-        default: []
-    },
-}, { timestamps: true });
+    cart: [
+        {
+            product_id: String,
+            quantity: Number
+        }
+    ]
+}, {
+    strict: false
+});
 const UserModel = mongoose_1.default.model('users', UserSchema);
 exports.default = UserModel;

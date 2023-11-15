@@ -1,4 +1,5 @@
 import mongoose, { Schema, InferSchemaType, Model } from 'mongoose';
+import Cart from './typeCart';
 
 
 const UserSchema: Schema<User> = new Schema<User>({
@@ -15,25 +16,18 @@ const UserSchema: Schema<User> = new Schema<User>({
         type: String,
         required: true
     },
-    cart: {
-        type: {
-            products: [{
-                product_id: {
-                    type: String,
-                    required: true
-                },
-                quantity: {
-                    type: Number,
-                    required: true
-                }
+    cart: [
+        {
+            product_id: String,
+            quantity: Number
+        }
+    ]
+}
 
-            }]
-        },
-
-        default: []
-    },
-
-}, { timestamps: true });
+    , {
+        strict: false
+    }
+);
 
 export type User = InferSchemaType<typeof Schema>;
 
