@@ -56,12 +56,8 @@ export async function changeQuantityOnCartByUser(_ids: UserAndProduct_Ids, chang
             { 'cart.$': 1 }
         )
         if (thisProduct) {
-            if (thisProduct!.cart[0].quantity <= 1) {              
-                res = getCartByUser(user_id)
-                console.log(res);
-                
-                await removeFromCart(_ids)
-                console.log("R", res);
+            if (thisProduct!.cart[0].quantity <= 1) {
+               return res = await removeFromCart(_ids)
             }
 
             res = await UserModel.findOneAndUpdate(

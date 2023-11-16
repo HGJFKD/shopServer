@@ -7,7 +7,6 @@ exports.changeQuantityOnCartByUser = void 0;
 const typeProductsModel_1 = __importDefault(require("../Types/typeProductsModel"));
 const typeUserModel_1 = __importDefault(require("../Types/typeUserModel"));
 const addToCart_1 = __importDefault(require("./addToCart"));
-const getCartByUser_1 = require("./getCartByUser");
 const getProductById_1 = require("./getProductById");
 const inc_1 = __importDefault(require("./inc"));
 const removeFromCart_1 = __importDefault(require("./removeFromCart"));
@@ -40,10 +39,7 @@ async function changeQuantityOnCartByUser(_ids, changer) {
         }, { 'cart.$': 1 });
         if (thisProduct) {
             if (thisProduct.cart[0].quantity <= 1) {
-                res = (0, getCartByUser_1.getCartByUser)(user_id);
-                console.log(res);
-                await (0, removeFromCart_1.default)(_ids);
-                console.log("R", res);
+                return res = await (0, removeFromCart_1.default)(_ids);
             }
             res = await typeUserModel_1.default.findOneAndUpdate({ _id: user_id, cart: { $elemMatch: { 'product_id': product_id } } }, { $inc: { 'cart.$.quantity': -1 } }, { new: true }).exec();
             await typeProductsModel_1.default.findOneAndUpdate({ 'products.product_id': product_id }, { $inc: { 'products.$.quantity': 1 } }, { new: true }).exec();
