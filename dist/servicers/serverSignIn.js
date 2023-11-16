@@ -15,9 +15,8 @@ async function serverSignIn(user) {
     }
     else {
         const user_id = await (0, getUserId_1.getUserId)(user);
-        console.log(user_id);
         const token = (0, createJWTToken_1.createJWTToken)(user_id);
-        return token;
+        return { token: token, user_id: user_id };
     }
 }
 exports.serverSignIn = serverSignIn;

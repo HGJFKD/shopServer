@@ -3,6 +3,7 @@ import isUser from "../DL/isUser";
 import { JWTCode } from "../Types/typeJWTCode";
 import { createJWTToken } from "../auth/createJWTToken";
 import { getUserId } from "../DL/getUserId";
+import { Types } from "mongoose";
 
 export async function serverSignIn(user: User): Promise<Record<string, JWTCode>> {
 
@@ -14,9 +15,9 @@ export async function serverSignIn(user: User): Promise<Record<string, JWTCode>>
     }
     else {
         const user_id = await getUserId(user)
-        console.log(user_id);
-        
+   
         const token: Record<string, JWTCode> = createJWTToken(user_id);
-        return token;
+
+        return { token: token, user_id: user_id};
     }
 }
