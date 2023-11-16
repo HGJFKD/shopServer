@@ -6,12 +6,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.serverUpdateCartByUser = void 0;
 const updateCartByUser_1 = require("../DL/updateCartByUser");
 const isUser_1 = __importDefault(require("../DL/isUser"));
-async function serverUpdateCartByUser(user) {
-    const { isUserBollean } = await (0, isUser_1.default)(user);
+async function serverUpdateCartByUser(body) {
+    const { user_id } = body;
+    const { isUserBollean } = await (0, isUser_1.default)(user_id, '_id');
     if (!isUserBollean) {
         throw new Error('We did not find such a user');
     }
-    const res = await (0, updateCartByUser_1.updateCartByUser)(user);
+    const res = await (0, updateCartByUser_1.updateCartByUser)(body);
     if (!res) {
         throw new Error();
     }

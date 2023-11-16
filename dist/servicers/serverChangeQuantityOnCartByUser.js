@@ -8,16 +8,17 @@ async function serverChangeQuantityOnCartByUser(body, changer) {
         user_id: user_id,
         product_id: product_id
     };
+    let res;
     if (body.user_id === null || body.product_id === null) {
         throw new Error('A must to grieve user_id end product_id');
     }
     else {
-        const res = await (0, changeQuantityOnCartByUser_1.changeQuantityOnCartByUser)(_ids, changer);
-        if (!res) {
-            throw new Error('We did not find a product with such an id');
+        res = await (0, changeQuantityOnCartByUser_1.changeQuantityOnCartByUser)(_ids, changer);
+        if (res) {
+            return res;
         }
         else {
-            return res;
+            throw new Error();
         }
     }
 }

@@ -1,6 +1,6 @@
 import UserModel, { User } from "../Types/typeUserModel";
 
-export default async function isUser(user: User, filter: string): Promise<{
+export default async function isUser(user: User , filter: string): Promise<{
     isUserBollean: boolean,
     errorMessage: string
 }> {

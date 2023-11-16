@@ -1,14 +1,14 @@
-import UserModel, { User } from "../Types/typeUserModel";
+import UpdateCart from "../Types/typeUpdateCart";
+import UserModel from "../Types/typeUserModel";
 
-export async function updateCartByUser(user: User) {
-    const _id = user._id
-    const products = user.cart['products']
+export async function updateCartByUser(body: UpdateCart) {
+    const { user_id, cart } = body
 
-    const res = await UserModel.findOne(
-        { _id: _id }
+    const res = await UserModel.findByIdAndUpdate(
+        { _id: user_id },
+        { $set: { cart: cart } },
+        { new: true }
     );
-    console.log(res);
-
 
     return res
 }

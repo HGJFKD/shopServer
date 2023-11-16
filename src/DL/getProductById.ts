@@ -7,9 +7,9 @@ import { refrigerator } from "../Types/ProductsSchemos/typeRefrigerator";
 import { shirt } from "../Types/ProductsSchemos/typeShirts";
 import ProductsModel from "../Types/typeProductsModel";
 
-// Get all data func
+
 export async function getProductById(product_id: string): Promise<
-    bottle | charger | earbud | laptop | phone | refrigerator | shirt | undefined> {
+    bottle | charger | earbud | laptop | phone | refrigerator | shirt | null> {
 
     const res = await ProductsModel.findOneAndUpdate(
         { 'products.product_id': product_id },
