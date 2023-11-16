@@ -11,6 +11,6 @@ const Cart = new mongoose_1.Schema({
         required: true
     }
 }, {
-    timestamps: true
+    timestamps: true,
 });
 exports.default = Cart;

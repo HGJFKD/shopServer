@@ -3,7 +3,6 @@ import {  Schema } from "mongoose";
 
 const Cart: Schema<typyCart> = new Schema<typyCart>({
 
-
     product_id: {
         type: String,
         required: true
@@ -13,8 +12,10 @@ const Cart: Schema<typyCart> = new Schema<typyCart>({
         type: Number,
         required: true
     }
+    
 }, {
-    timestamps: true
+    timestamps: true,
+
 });
 
 export type typyCart = {

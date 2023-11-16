@@ -12,16 +12,16 @@ const morgan = require('morgan');
 const chalk = require('chalk')
 const app = express();
 
-
 app.use(morgan("dev"))
 app.use(cors());
 app.use(express.json())
 
-// app.use(unless('/cart', authenticateToken))
+// app.use(unless('/user', authenticateToken))
+// app.use(unless('/shop', authenticateToken))
 
 app.use('/user', userRouter);
 app.use('/shop', shopRouter);
-app.use('/cart', cartRouter);
+app.use('/cart', authenticateToken, cartRouter);
 
 app.use("*", resPageNotFound);
 
