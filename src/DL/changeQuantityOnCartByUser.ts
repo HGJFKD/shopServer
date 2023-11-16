@@ -17,9 +17,10 @@ import removeFromCart from "./removeFromCart";
 
 
 export async function changeQuantityOnCartByUser(_ids: UserAndProduct_Ids, changer: Changer): Promise<
-    bottle | charger | earbud | laptop | phone | refrigerator | shirt | null | string> {
+    bottle | charger | earbud | laptop | phone | refrigerator | shirt | null> {
 
     const { user_id, product_id } = _ids;
+
     let res;
 
     if (changer === 0) {
@@ -35,29 +36,39 @@ export async function changeQuantityOnCartByUser(_ids: UserAndProduct_Ids, chang
             const thisProduct = await getProductById(product_id)
             if (Number(thisProduct!.products[0].quantity) >= 1) {
 
-                res = await inc(_ids)
+                return res = await inc(_ids)
 
             } else {
                 throw new Error(`product: ${product_id} is Out of stock `)
             }
         } else {
-            res = await addToCart(_ids)
-            res = await inc(_ids)
+
+            const thisProduct = await getProductById(product_id)
+            if (Number(thisProduct!.products[0].quantity) >= 1) {
+                res = await addToCart(_ids)
+                return res = await inc(_ids)
+
+            } else {
+                throw new Error(`product: ${product_id} is Out of stock `)
+            }
         }
     }
 
 
     if (changer === 1) {
+        console.log(product_id);
+
         const thisProduct = await UserModel.findOne(
             {
                 _id: user_id,
-                cart: { $elemMatch: { 'product_id': product_id } },
-            },
-            { 'cart.$': 1 }
+                cart: { $elemMatch: { 'product_id': product_id } }
+            }
         )
+        console.log(thisProduct);
+
         if (thisProduct) {
             if (thisProduct!.cart[0].quantity <= 1) {
-               return res = await removeFromCart(_ids)
+                return res = await removeFromCart(_ids)
             }
 
             res = await UserModel.findOneAndUpdate(
@@ -78,5 +89,4 @@ export async function changeQuantityOnCartByUser(_ids: UserAndProduct_Ids, chang
 
     }
 
-    return res
 }

@@ -21,22 +21,30 @@ async function changeQuantityOnCartByUser(_ids, changer) {
         if (thisProductAtCart) {
             const thisProduct = await (0, getProductById_1.getProductById)(product_id);
             if (Number(thisProduct.products[0].quantity) >= 1) {
-                res = await (0, inc_1.default)(_ids);
+                return res = await (0, inc_1.default)(_ids);
             }
             else {
                 throw new Error(`product: ${product_id} is Out of stock `);
             }
         }
         else {
-            res = await (0, addToCart_1.default)(_ids);
-            res = await (0, inc_1.default)(_ids);
+            const thisProduct = await (0, getProductById_1.getProductById)(product_id);
+            if (Number(thisProduct.products[0].quantity) >= 1) {
+                res = await (0, addToCart_1.default)(_ids);
+                return res = await (0, inc_1.default)(_ids);
+            }
+            else {
+                throw new Error(`product: ${product_id} is Out of stock `);
+            }
         }
     }
     if (changer === 1) {
+        console.log(product_id);
         const thisProduct = await typeUserModel_1.default.findOne({
             _id: user_id,
-            cart: { $elemMatch: { 'product_id': product_id } },
-        }, { 'cart.$': 1 });
+            cart: { $elemMatch: { 'product_id': product_id } }
+        });
+        console.log(thisProduct);
         if (thisProduct) {
             if (thisProduct.cart[0].quantity <= 1) {
                 return res = await (0, removeFromCart_1.default)(_ids);
@@ -48,6 +56,5 @@ async function changeQuantityOnCartByUser(_ids, changer) {
             throw new Error('There is no such product in the cart');
         }
     }
-    return res;
 }
 exports.changeQuantityOnCartByUser = changeQuantityOnCartByUser;

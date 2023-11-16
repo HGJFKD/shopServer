@@ -1,13 +1,23 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateCartByUser = void 0;
-const typeUserModel_1 = __importDefault(require("../Types/typeUserModel"));
+const changeQuantityOnCartByUser_1 = require("./changeQuantityOnCartByUser");
+const getCartByUser_1 = require("./getCartByUser");
 async function updateCartByUser(body) {
     const { user_id, cart } = body;
-    const res = await typeUserModel_1.default.findByIdAndUpdate({ _id: user_id }, { $set: { cart: cart } }, { new: true });
-    return res;
+    const changer = 0;
+    cart.map(async ({ quantity, product_id }) => {
+        for (let index = 0; index < quantity; index++) {
+            try {
+                const added = await (0, changeQuantityOnCartByUser_1.changeQuantityOnCartByUser)({ user_id, product_id }, changer);
+                console.log(added);
+            }
+            catch (error) {
+                continue;
+            }
+        }
+    });
+    const newCatt = await (0, getCartByUser_1.getCartByUser)(user_id);
+    return newCatt;
 }
 exports.updateCartByUser = updateCartByUser;

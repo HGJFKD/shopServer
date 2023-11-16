@@ -1,6 +1,7 @@
+import { Types } from "mongoose"
 
 type UpdateCart = {
-    user_id: string,
+    user_id: Types.ObjectId,
     cart: [
         {
             product_id: string,
