@@ -17,8 +17,6 @@ const app = express();
 app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
-// app.use(unless('/user', authenticateToken))
-// app.use(unless('/shop', authenticateToken))
 app.use('/user', userRouter_1.default);
 app.use('/shop', shopRouter_1.default);
 app.use('/cart', authenticateToken_1.authenticateToken, cartRouter_1.default);
